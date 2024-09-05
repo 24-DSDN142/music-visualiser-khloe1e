@@ -1,5 +1,5 @@
 function setup() {
-  createCanvas(540, 960, WebGL);
+  createCanvas(540, 960, WEBGL);
   angleMode(DEGREES);
   background(0);
   strokeWeight(4);
@@ -15,7 +15,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
   for (var i = 0; i < 10; i++){
     beginShape()
-    for (var j = 0; j < 360, j += 10) {
+    for (var j = 0; j < 360; j += 10) {
       var rad = i * 8
       var x = rad * cos(j)
       var y = rad * sin(j)
