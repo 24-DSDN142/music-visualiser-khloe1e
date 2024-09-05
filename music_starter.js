@@ -1,3 +1,8 @@
+function preload() {
+  song = loadSound("song.mp3")
+}
+
+
 function setup() {
   createCanvas(540, 960, WEBGL);
   angleMode(DEGREES);
