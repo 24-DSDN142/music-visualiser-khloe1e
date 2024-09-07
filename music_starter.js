@@ -1,5 +1,5 @@
-let wide = 960
-let high = 540
+let wide = 540
+let high = 960
 let start = 0
 
 function setup() {
@@ -11,14 +11,22 @@ function setup() {
   noiseDetail(2,1)
   
 }
-// vocal, drum, bass, and other are volumes ranging from 0 to 100
-function draw(vocal) {
-  background(30);
+
+//Layer 1 - 
+
+
+
+
+
+
+//Layer 3 - Circular perlin noise 
+function draw(bass) {
+  background(0);
   noStroke();
 
   translate(wide/2, high/2);
 
-  var space=10 //the space between rect
+  var space = 1 //the space between rect
 
   for (var i=0; i<360; i += space) {
 
@@ -29,7 +37,7 @@ function draw(vocal) {
 
     var h = map (n, 0, 1, -150, 150)
     rotate(space)
-    rect(200, 0, h, 10)
+    rect(200, 0, h, 1)
 
   }
 
