@@ -1,5 +1,7 @@
+var sound, amp, freq;
+
 function preload() {
-  song = loadSound("song.mp3")
+  sound = loadSound("song.mp3")
 }
 
 
@@ -13,6 +15,12 @@ function setup() {
   amp = new p5.Amplitude();
   amp.setInput(sound);
 
+  //create a FFT object
+  //smoothing = 0.5
+  //bin - 64
+  freq = new p5.FFT(0.5);
+  freq.setInput(sound);
+
 }
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
@@ -23,6 +31,19 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   ellipse(540/2, 960/2, vol*100, vol*100);
   ellipse(540/2 + 200, 960/2, vol*100, vol*100);
   ellipse(540/2 - 200, 960/2, vol*100, vol*100);
+
+  //Get the spectrum
+  var spectrum = freq.analyze();
+
+  //Draw the spectrum using rectangle (64rects)
+  for(var i=0; i<spectrum.length;i++){
+    var x= 540 / spectrum.length * i;
+    var y=0;
+    var w= 540 / spectrum.length;
+    var h= spectrum[i];
+    rect(x,y,w,h);
+  }
+  
 
 
 }
