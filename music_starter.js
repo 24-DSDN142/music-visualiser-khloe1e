@@ -39,22 +39,7 @@ function draw() {
   }
 }
 
-//LAYER2 - Round waveform - Other electronics
-function draw() {
-  stoke(255)
-  var wave = fft.waveform()
 
-  for (var i = 0; i < wide; i++) {
-    var index = floor(map(i, 0, wide, 0, wave.length)) //create an index that maps the for loop variable to the index of the wave that i want
-    //create an x&y coordinate
-    var x = i // the x coordinate should be equal to the for loop variable
-    var y = wave[index] * 300 + high/2
-    point(x, y) 
-
-
-  }
-
-}
 
 
 
@@ -83,3 +68,4 @@ function draw(bass) {
 
   start += 0.1
 }
+
