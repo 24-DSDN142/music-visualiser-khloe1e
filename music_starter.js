@@ -35,7 +35,7 @@ function draw_one_frame(words, vocal, drum, bass, other,counter) {
 
     stroke(r, g, b)
 
-    rect(0, 0, 200 - i * 2, 200 - i * 2, 50 -i)// for every loop, the height and width should be decreased so use the i to control
+    rect(0, 0, 200 - i, 200 - i, 50 -i)// for every loop, the height and width should be decreased so use the i to control
      //rect(0, 0, 200, 200, 50) last value is softened
 }
  //layer 2
@@ -54,5 +54,25 @@ function draw_one_frame(words, vocal, drum, bass, other,counter) {
   angle += 0.05; //random(-0.1, 0.1);
   p -= random(-2, 2);
 
+ //layer3
+ translate(wide/2, high/2);
+ angleMode(DEGREES);
+
+ var space = 1 //the space between rect
+
+ for (var i=0; i<360; i += space) {
+
+   var xoff = map (cos(i), -1, 1, 0, 3)
+   var yoff = map (sin(i), -1, 1, 0, 3)
+
+   var n = noise (xoff + start, yoff + start)
+
+   var h = map (n, 0, 1, -150, 150)
+   rotate(space)
+   rect(200, 0, h, 1)
+
+ }
+
+ start += 0.1
 }
  
