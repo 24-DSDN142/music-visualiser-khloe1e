@@ -27,9 +27,7 @@ function draw_one_frame(words, vocal, drum, bass, other,counter) {
   noFill();
   
   let secondsCounter = floor(counter / 60);
-  //stroke(255); //incase you don't want color
-
-
+  
 
  //layer 1
 //  angleMode(RADIANS)
@@ -38,26 +36,26 @@ push();
   strokeWeight(16);
   stroke(drumColour);
   //b = bass //originally using r but change to p because r is already used above
-  for(let i =0; i < 30; i++) {
+  for(let i =0; i < 100; i++) {
     
     
     p = Bass
 
-    let angle = map(i, 0, 30, 0, PI*2)
+    let angle = map(i, 0, 100, 0, PI*2)
   let x = p * cos(angle);
   let y = p * sin(angle);
   point(x, y);
   }
   angle += 0.05; //random(-0.1, 0.1);
-  p -= random(-2, 2);
+  p -= random(-4, 2);
 pop();
- //layer2
+ //layer2 vocal
  //translate(canvasWidth/2, canvasHeight/2);
-//  angleMode(DEGREES);
+//angleMode(DEGREES);
 push();
 translate(canvasWidth/2, canvasHeight/2);
-strokeWeight(16);
-stroke(255);
+strokeWeight(9);
+noStroke()
  var space = 1 //the space between rect
 
  for (var i=0; i<360; i += space) {
@@ -68,8 +66,15 @@ stroke(255);
    var n = noise (xoff + start, yoff + start)
 
    var h = map (n, 0, 1, -150, 150)
+
+   var r = map(sin(i), -1, 1, 100, 200)
+   var g = map(h, -150, 150, 0, 150)
+   var b = map (n, 0, 1, 150, 255)
+
+   
    rotate(space)
-   rect(200, 0, h, 1)
+   fill (r, g, b)
+   rect(250, 0, h, 20)
 
  }
 
