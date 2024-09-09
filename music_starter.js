@@ -3,7 +3,9 @@ let start = 0
 let angle = 0
 let p = 300
 
-
+//var r = map(sin(frameCount), -1, 1, 50, 255)
+//var g = map(cos(frameCount/2), -1, 1, 50, 255)
+//var b = map(sin(frameCount/4), -1, 1, 50, 255)
  
  
 
@@ -14,9 +16,10 @@ let p = 300
 function draw_one_frame(words, vocal, drum, bass, other,counter) {
   angleMode(RADIANS);
   rectMode(CENTER);
+  noiseDetail(0.1);
 
   let vocalNoise = map (vocal, 20,100, 0,1,true)
-  let doubledBass = map (bass, 0,100, 0, 200, true)
+  let Bass = map (bass, 0,100, 0, 200, true)
 
   let drumColour = map (drum,0,100,0,255,true)
   
@@ -28,19 +31,19 @@ function draw_one_frame(words, vocal, drum, bass, other,counter) {
 
 
 
- //layer 2
+ //layer 1
 //  angleMode(RADIANS)
 push();
  translate(canvasWidth/2, canvasHeight/2);
   strokeWeight(16);
   stroke(drumColour);
   //b = bass //originally using r but change to p because r is already used above
-  for(let i =0; i < 20; i++) {
+  for(let i =0; i < 30; i++) {
     
     
-    p = doubledBass
+    p = Bass
 
-    let angle = map(i, 0, 20, 0, PI*2)
+    let angle = map(i, 0, 30, 0, PI*2)
   let x = p * cos(angle);
   let y = p * sin(angle);
   point(x, y);
@@ -48,7 +51,7 @@ push();
   angle += 0.05; //random(-0.1, 0.1);
   p -= random(-2, 2);
 pop();
- //layer3
+ //layer2
  //translate(canvasWidth/2, canvasHeight/2);
 //  angleMode(DEGREES);
 push();
@@ -70,7 +73,7 @@ stroke(255);
 
  }
 
- start += 0.1
+ start += 0.01
 pop();
 push();
 
