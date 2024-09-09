@@ -18,7 +18,7 @@ function draw_one_frame(words, vocal, drum, bass, other,counter) {
   rectMode(CENTER);
   noiseDetail(0.1);
 
-  let vocalNoise = map (vocal, 20,100, 0.1,true)
+  let vocalNoise = map (vocal, 20,100, 0.1, 200,true)
   let Bass = map (bass, 0,100, 0, 200, true)
   let drumColour = map (drum,0,50,0,255,true)
   
@@ -55,7 +55,7 @@ push();
 translate(canvasWidth/2, canvasHeight/2);
 strokeWeight(9);
 noStroke()
- var space = 1 //the space between rect
+ var space = map(noiseLevel, 0, 255, 1, 10) //the space between rect
 
  for (var i=0; i<360; i += space) {
 
@@ -70,10 +70,11 @@ noStroke()
    var g = map(h, -150, 150, 0, 150)
    var b = map (n, 0, 1, 150, 255)
 
-   
-   rotate(space)
+   push()
+   rotate(i)
    fill (r, g, b)
-   rect(200, 0, h, vocalNoise)
+   rect(200, 0, h, 1)
+   pop()
 
  }
 
@@ -84,12 +85,7 @@ pop();
 push();
 translate(canvasWidth/2, canvasHeight/2);
 
-for (let t=0; t<360; t++) {
-  let x = sqrt(2) * pow(sin(t), 3)
-  let y = pow(-cos(t), 3) - pow(cos(t), 2) + 2 *cos(t)
 
-  ellipse (x * 50, y * 50, 10, 10)
-}
 
 pop()
 
