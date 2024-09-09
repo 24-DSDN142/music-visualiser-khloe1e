@@ -18,10 +18,9 @@ function draw_one_frame(words, vocal, drum, bass, other,counter) {
   rectMode(CENTER);
   noiseDetail(0.1);
 
-  let vocalNoise = map (vocal, 20,100, 0,1,true)
+  let vocalNoise = map (vocal, 20,100, 0.1,true)
   let Bass = map (bass, 0,100, 0, 200, true)
-
-  let drumColour = map (drum,0,100,0,255,true)
+  let drumColour = map (drum,0,50,0,255,true)
   
   background(0);
   noFill();
@@ -74,12 +73,32 @@ noStroke()
    
    rotate(space)
    fill (r, g, b)
-   rect(250, 0, h, 20)
+   rect(200, 0, h, vocalNoise)
 
  }
 
  start += 0.01
 pop();
+
+//heart
+push();
+translate(canvasWidth/2, canvasHeight/2);
+
+for (let t=0; t<360; t++) {
+  let x = sqrt(2) * pow(sin(t), 3)
+  let y = pow(-cos(t), 3) - pow(cos(t), 2) + 2 *cos(t)
+
+  ellipse (x * 50, y * 50, 10, 10)
+}
+
+pop()
+
+
+
+
+
+
+
 push();
 
 fill (0,100);
@@ -98,7 +117,6 @@ text ('other: ' + round(other), 100, canvasHeight-50);
 pop();
 }
  
- //stroke(255); //incase you don't want color
 
   // //layer1
   // translate(canvasWidth/2, canvasHeight/2);
