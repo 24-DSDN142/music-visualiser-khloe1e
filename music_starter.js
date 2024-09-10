@@ -2,6 +2,7 @@
 let start = 0
 let angle = 0
 let p = 300
+let num = 50
 
 //var r = map(sin(frameCount), -1, 1, 50, 255)
 //var g = map(cos(frameCount/2), -1, 1, 50, 255)
@@ -84,7 +85,15 @@ pop();
 //heart
 push();
 translate(canvasWidth/2, canvasHeight/2);
+noStroke();
+fill(255);
+for (let i=0; i<num; i++) {
+  let t = 360/num * i
+  let x = sqrt(2) * pow(sin(t), 3)
+  let y = pow(-cos(t), 3) - pow(cos(t), 2) + 2 *cos(t)
 
+  ellipse (x * -30, y * -30, 10, 10)
+  }
 
 
 pop()
