@@ -1,18 +1,13 @@
-
 let start = 0
 let angle = 0
 let p = 300
-let num = 50
+let num = 50 
+let bgImage;
 
-//var r = map(sin(frameCount), -1, 1, 50, 255)
-//var g = map(cos(frameCount/2), -1, 1, 50, 255)
-//var b = map(sin(frameCount/4), -1, 1, 50, 255)
- 
- 
-
-
-  
-
+function preload() {
+  bgImage = loadImage('background2.png');
+ }
+ console.log(bgImage);
 
 function draw_one_frame(words, vocal, drum, bass, other,counter) {
   angleMode(RADIANS);
@@ -22,14 +17,16 @@ function draw_one_frame(words, vocal, drum, bass, other,counter) {
   let vocalNoise = map (vocal, 20,100, 0.1, 200,true)
   let Bass = map (bass, 0,100, 0, 200, true)
   let drumColour = map (drum,0,50,0,255,true)
-  
-  background(0);
+
+  //background(0);
   noFill();
-  
+  imageMode(CENTER);
+  image(bgImage, 0, 0, 564, 999);
+
   let secondsCounter = floor(counter / 60);
   
 
- //layer 1
+//layer 1
 //  angleMode(RADIANS)
 push();
  translate(canvasWidth/2, canvasHeight/2);
@@ -84,7 +81,7 @@ pop();
 
 //heart
 push();
-translate(canvasWidth/2, canvasHeight/2);
+translate(canvasWidth/2, 310);
 noStroke();
 fill(255);
 for (let i=0; i<num; i++) {
