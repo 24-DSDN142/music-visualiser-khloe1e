@@ -55,7 +55,7 @@ push();
 translate(canvasWidth/2, canvasHeight/2);
 strokeWeight(9);
 noStroke()
- var space = map(noiseLevel, 0, 255, 1, 10) //the space between rect
+ var space = 1 //the space between rect
 
  for (var i=0; i<360; i += space) {
 
@@ -64,10 +64,10 @@ noStroke()
 
    var n = noise (xoff + start, yoff + start)
 
-   var h = map (n, 0, 1, -150, 150)
+   var h = map (n, 0, 1, -vocalNoise, vocalNoise)
 
    var r = map(sin(i), -1, 1, 100, 200)
-   var g = map(h, -150, 150, 0, 150)
+   var g = map(h, -vocalNoise, vocalNoise, 0, 150)
    var b = map (n, 0, 1, 150, 255)
 
    push()
