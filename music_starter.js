@@ -14,7 +14,7 @@ function draw_one_frame(words, vocal, drum, bass, other,counter) {
 
     firstRun = false;
   }
-
+// test
   angleMode(RADIANS);
   rectMode(CENTER);
   noiseDetail(0.1);
